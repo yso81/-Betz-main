@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   BRAND PALETTE — single source of truth for all colors
+   ═══════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Teal palette — base: #045D5D ─────────────────────── */
+  --color-teal-50:  #e8f5f5;
+  --color-teal-100: #c5e6e6;
+  --color-teal-200: #9fd5d5;
+  --color-teal-300: #6fbfbd;
+  --color-teal-400: #3aa5a3;
+  --color-teal-500: #045D5D;
+  --color-teal-600: #045151;
+  --color-teal-700: #034242;
+  --color-teal-800: #023333;
+  --color-teal-900: #012424;
+  --color-teal-950: #001515;
+
+  /* ── Navy palette — base: #000080 ─────────────────────── */
+  --color-navy-50:  #e6e6f2;
+  --color-navy-100: #c0c0e0;
+  --color-navy-200: #9a9ace;
+  --color-navy-300: #7474bc;
+  --color-navy-400: #4e4eaa;
+  --color-navy-500: #000080;
+  --color-navy-600: #000073;
+  --color-navy-700: #000060;
+  --color-navy-800: #00004d;
+  --color-navy-900: #00003a;
+  --color-navy-950: #000027;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BACKGROUND PATTERN UTILITIES
+   ═══════════════════════════════════════════════════════════ */
+
+/* Halftone dot pattern */
+.bg-neon-halftone {
+  background-color: #000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cdefs%3E%3Cpattern id='d' x='0' y='0' width='32' height='32' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='16' cy='16' r='3.5' fill='%23045D5D'/%3E%3C/pattern%3E%3CradialGradient id='g' cx='100%25' cy='100%25' r='80%25'%3E%3Cstop offset='0%25' stop-color='%23fff' stop-opacity='1'/%3E%3Cstop offset='100%25' stop-color='%23fff' stop-opacity='0'/%3E%3C/radialGradient%3E%3Cmask id='m'%3E%3Crect width='100%25' height='100%25' fill='url(%23g)'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23d)' mask='url(%23m)'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* Cyberpunk grid overlay */
+.bg-cyber-grid {
+  background-color: #020617;
+  background-image:
+    linear-gradient(to right, rgba(4, 93, 93, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(4, 93, 93, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+  position: relative;
+}
+.bg-cyber-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, #020617 80%);
+  pointer-events: none;
+}
+
+/* Aurora borealis glow */
+.bg-aurora-glow {
+  background-color: #020617;
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(4, 93, 93, 0.15), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(0, 0, 128, 0.15), transparent 25%);
+  background-attachment: fixed;
+}
+
+/* Topographic map pattern */
+.bg-topography {
+  background-color: #020617;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(4,93,93,0.05)' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   UTILITY OVERRIDES
+   ═══════════════════════════════════════════════════════════ */
+
+/* Hide scrollbars while maintaining scroll */
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.custom-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==========================
+   BETZ Visual Theme Tweaks
+   (Non-functional visual-only overrides)
+   ========================== */
+
+:root {
+  --betz-accent: #06b6d4; /* cyan-ish */
+  --betz-accent-2: #10b981; /* lime/teal */
+  --betz-card-bg: rgba(6,8,14,0.65);
+  --betz-panel-border: rgba(6,182,212,0.08);
+  --betz-glow: rgba(6,182,212,0.06);
+}
+
+body {
+  background: radial-gradient(circle at 15% 10%, rgba(6,182,212,0.035), transparent),
+              linear-gradient(180deg,#030417 0%, #071026 60%);
+  color: #cbd5e1;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Make large rounded panels look like the screenshot (dark, glassy cards) */
+.rounded-3xl {
+  background: var(--betz-card-bg) !important;
+  border: 1px solid var(--betz-panel-border) !important;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6) !important;
+  color: #e6eef7 !important;
+}
+
+/* Header polish */
+header {
+  background: linear-gradient(90deg, rgba(4,93,93,0.06), rgba(7,16,38,0.55)) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.03) !important;
+  box-shadow: 0 4px 20px rgba(2,6,23,0.45) !important;
+}
+
+/* Bottom nav / footer treatment */
+nav[class*="sticky"], nav.sticky, nav[role="navigation"] {
+  background: rgba(3,6,14,0.82) !important;
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255,255,255,0.03) !important;
+}
+
+nav button { transition: all .15s ease-in-out; }
+nav button:hover { transform: translateY(-2px); }
+
+footer {
+  background: linear-gradient(90deg, rgba(2,6,23,0.9), rgba(7,10,20,0.8)) !important;
+  border-top: 1px solid rgba(255,255,255,0.03) !important;
+  color: #9fb3c8 !important;
+}
+
+/* Highlight badges and accents */
+.text-teal-400, .text-indigo-400 { color: var(--betz-accent-2) !important; }
+.bg-teal-400, .bg-indigo-600 { background-color: var(--betz-accent-2) !important; }
+
+/* Schema viewer / server log boxes often use small monospace panels; add subtle inner glow */
+.rounded-3xl .font-mono, .rounded-3xl code, .rounded-3xl pre {
+  color: #9fe7ff !important;
+}
+
+/* Make images contained in posts more contrasted */
+.rounded-3xl img { border-radius: 14px; object-fit: cover; }
+
+/* Reduce visual noise from very bright white panels by toning them down */
+.bg-white\/80, .bg-slate-50, .bg-slate-100 { background-color: rgba(255,255,255,0.06) !important; color: #dbeafe !important; }
+

@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   BRAND PALETTE — single source of truth for all colors
+   ═══════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Teal palette — base: #045D5D ─────────────────────── */
+  --color-teal-50:  #e8f5f5;
+  --color-teal-100: #c5e6e6;
+  --color-teal-200: #9fd5d5;
+  --color-teal-300: #6fbfbd;
+  --color-teal-400: #3aa5a3;
+  --color-teal-500: #045D5D;
+  --color-teal-600: #045151;
+  --color-teal-700: #034242;
+  --color-teal-800: #023333;
+  --color-teal-900: #012424;
+  --color-teal-950: #001515;
+
+  /* ── Navy palette — base: #000080 ─────────────────────── */
+  --color-navy-50:  #e6e6f2;
+  --color-navy-100: #c0c0e0;
+  --color-navy-200: #9a9ace;
+  --color-navy-300: #7474bc;
+  --color-navy-400: #4e4eaa;
+  --color-navy-500: #000080;
+  --color-navy-600: #000073;
+  --color-navy-700: #000060;
+  --color-navy-800: #00004d;
+  --color-navy-900: #00003a;
+  --color-navy-950: #000027;
+
+  /* ── Animations ────────────────────────────────────────── */
+  --animate-fade-in: fade-in 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   UTILITY OVERRIDES
+   ═══════════════════════════════════════════════════════════ */
+
+/* Hide scrollbars while maintaining scroll */
+#root::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,27 @@
+Final AI Studio Application
+└── Project Root
+    ├── 1. Entry Points (The Foundation)
+    │   ├── index.html ─────────────────── (The main HTML structure where the app is mounted)
+    │   └── src/main.tsx ───────────────── (The TSX entry point rendering React into HTML)
+    │
+    ├── 2. Core Application Logic (src/App.tsx)
+    │   ├── UI Components (User Interface)
+    │   │   ├── src/AuthPage.tsx ───────── (Manages user authentication & login screens)
+    │   │   └── src/BetzLogo.tsx ───────── (Handles branding and logo display)
+    │   │
+    │   ├── Data & Services
+    │   │   ├── src/backendDb_supa.ts ──── (Handles interactions with Supabase database)
+    │   │   └── src/types.ts ───────────── (Defines data structures & TypeScript types)
+    │   │
+    │   └── Styling
+    │       └── src/index.css ──────────── (Provides visual styling & layout for components)
+    │
+    ├── 3. Backend & Server-Side
+    │   └── server.ts ──────────────────── (TypeScript server logic supporting backend operations)
+    │
+    └── 4. Configuration & Build Environment
+        ├── package.json ───────────────── (Defines dependencies and execution scripts)
+        ├── vite.config.ts ─────────────── (Configures the Vite build tool)
+        ├── tsconfig.json ──────────────── (Sets TypeScript compilation/transpilation rules)
+        ├── .env.example ───────────────── (Template for environment variables e.g., GEMINI_API_KEY)
+        └── metadata.json ──────────────── (Contains descriptive metadata about the project)s
