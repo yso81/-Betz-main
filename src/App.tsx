@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Challenge, UserChallenge, CheckIn, LoginForm, RegisterForm, ChallengeType, CreateFriendBetForm, CreateLocalBetForm } from './types';
 import { User as UserIcon, Plus, Home, Users, TrendingUp, MoreVertical, CheckCircle2, XCircle, Clock, Flame } from 'lucide-react';
 import AuthPage from './components/auth/AuthPage';
@@ -16,6 +16,14 @@ import SectionLabel from './components/ui/SectionLabel';
 import NavButton from './components/ui/NavButton';
 import Avatar from './components/ui/Avatar';
 import StatCard from './components/ui/StatCard';
+
+interface ProfileFormState {
+  bio: string;
+  fullName: string;
+  location: string;
+  interests: string;
+  avatarUrl: string;
+}
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState<{
@@ -46,13 +54,15 @@ export default function App() {
 
   const [showSettingsMenu, setShowSettingsMenu] = useState(false);
   const [challengeFilter, setChallengeFilter] = useState<'all' | 'ACTIVE' | 'COMPLETED' | 'FAILED'>('all');
-  const [profileForm, setProfileForm] = useState({
+  
+  const [profileForm, setProfileForm] = useState<ProfileFormState>({
     bio: '',
     fullName: '',
     location: '',
     interests: '',
     avatarUrl: '',
   });
+  
   const [profileSaving, setProfileSaving] = useState(false);
   const [profileUploading, setProfileUploading] = useState(false);
   const [profileMessage, setProfileMessage] = useState<string | null>(null);
@@ -454,7 +464,7 @@ export default function App() {
   };
 
   const selectedChallenge = selectedChallengeId
-    ? challenges.find(c => c.id === selectedChallengeId)
+    ? (challenges.find(c => c.id === selectedChallengeId) ?? null)
     : null;
   const selectedUserChallenge = selectedChallengeId
     ? userChallenges.find(uc => uc.challenge_id === selectedChallengeId)
@@ -711,12 +721,12 @@ export default function App() {
                               const ch = challenges.find(c => c.id === uc.challenge_id);
                               if (!ch) return null;
 
-                              const statusConfig = {
+                              const statusConfig: Record<'ACTIVE' | 'COMPLETED' | 'FAILED', { icon: React.ComponentType<any>; color: string; bg: string }> = {
                                 ACTIVE: { icon: Flame, color: 'text-blue-400', bg: 'bg-blue-500/20' },
                                 COMPLETED: { icon: CheckCircle2, color: 'text-emerald-400', bg: 'bg-emerald-500/20' },
                                 FAILED: { icon: XCircle, color: 'text-rose-400', bg: 'bg-rose-500/20' },
                               };
-                              const cfg = statusConfig[uc.status];
+                              const cfg = statusConfig[uc.status as 'ACTIVE' | 'COMPLETED' | 'FAILED'];
                               const StatusIcon = cfg.icon;
 
                               const categoryColors: Record<string, string> = {
