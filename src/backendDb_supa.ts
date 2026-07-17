@@ -133,7 +133,7 @@ class MockDatabaseEngine {
       id: createEntityId(),
       username: formattedUsername,
       email: formattedEmail,
-      total_xp: 0,
+      total_xp: 1000, // 👈 Changed from 0 to 1000
       ...(bio ? { bio } : {}),
       ...(fullName ? { full_name: fullName } : {}),
       ...(location ? { location } : {}),
@@ -304,7 +304,7 @@ class MockDatabaseEngine {
       challenge_title: challenge.title,
       user_id: userId,
       username,
-      imageUrl: imageUrl || 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=60',
+      imageUrl: imageUrl || 'https://images.unsplash.com/photo-1517441905240-472988babdf9?w=500&auto=format&fit=crop&q=60',
       text_proof,
       message: text_proof,
       media_url: imageUrl,
@@ -444,7 +444,7 @@ class SupabaseEngine {
         username: formattedUsername,
         email: formattedEmail,
         password_hash: passwordHash,
-        total_xp: 0,
+        total_xp: 1000, // 👈 Changed from 0 to 1000
         ...(bio ? { bio } : {}),
         ...(fullName ? { full_name: fullName } : {}),
         ...(location ? { location } : {}),
